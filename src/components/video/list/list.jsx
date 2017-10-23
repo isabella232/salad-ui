@@ -1,4 +1,5 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 import { get } from '../../../lib/http'
 import Grid from '../../util/grid/grid'
 import Preview, {mediaTypes} from '../preview/preview'
@@ -21,12 +22,12 @@ export default class List extends React.Component {
   }
 
   static propTypes = {
-    sortBy: React.PropTypes.string,
-    limit: React.PropTypes.number,
-    flags: React.PropTypes.array,
-    endpoint: React.PropTypes.string,
-    searchTerm: React.PropTypes.string,
-    mediaType: React.PropTypes.oneOf(['video', 'playlist']),
+    sortBy: PropTypes.string,
+    limit: PropTypes.number,
+    flags: PropTypes.array,
+    endpoint: PropTypes.string,
+    searchTerm: PropTypes.string,
+    mediaType: PropTypes.oneOf(['video', 'playlist']),
   }
 
   static defaultProps = {

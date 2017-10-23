@@ -10,6 +10,10 @@ var _react = require('react');
 
 var _react2 = _interopRequireDefault(_react);
 
+var _propTypes = require('prop-types');
+
+var _propTypes2 = _interopRequireDefault(_propTypes);
+
 var _formatter = require('../../../lib/formatter');
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
@@ -104,14 +108,14 @@ Bar.defaultProps = {
   label: 'N/A'
 };
 Bar.propTypes = {
-  metricName: _react2.default.PropTypes.string,
-  percent: _react2.default.PropTypes.number,
-  barWidth: _react2.default.PropTypes.number,
-  barHeight: _react2.default.PropTypes.number,
-  metricPadding: _react2.default.PropTypes.number,
-  label: _react2.default.PropTypes.string,
-  metricColor: _react2.default.PropTypes.string,
-  barColor: _react2.default.PropTypes.string,
-  barRailColor: _react2.default.PropTypes.string
+  metricName: _propTypes2.default.string,
+  percent: _propTypes2.default.number,
+  barWidth: _propTypes2.default.number,
+  barHeight: _propTypes2.default.number,
+  metricPadding: _propTypes2.default.number,
+  label: _propTypes2.default.string,
+  metricColor: _propTypes2.default.string,
+  barColor: _propTypes2.default.string,
+  barRailColor: _propTypes2.default.string
 };
 exports.default = Bar;

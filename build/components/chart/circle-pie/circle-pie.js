@@ -10,6 +10,10 @@ var _react = require('react');
 
 var _react2 = _interopRequireDefault(_react);
 
+var _propTypes = require('prop-types');
+
+var _propTypes2 = _interopRequireDefault(_propTypes);
+
 var _chart = require('../chart/chart');
 
 var _chart2 = _interopRequireDefault(_chart);
@@ -98,17 +102,17 @@ var CirclePie = function (_Component) {
 }(_react.Component);
 
 CirclePie.propTypes = {
-  width: _react2.default.PropTypes.number,
-  height: _react2.default.PropTypes.number,
-  strokeWidth: _react2.default.PropTypes.number,
-  strokeColor: _react2.default.PropTypes.string,
-  labelFontWeight: _react2.default.PropTypes.string,
-  labelFontSize: _react2.default.PropTypes.string,
-  fillColor: _react2.default.PropTypes.string,
-  startAngle: _react2.default.PropTypes.number,
-  endAngle: _react2.default.PropTypes.number,
-  radius: _react2.default.PropTypes.number,
-  style: _react2.default.PropTypes.object
+  width: _propTypes2.default.number,
+  height: _propTypes2.default.number,
+  strokeWidth: _propTypes2.default.number,
+  strokeColor: _propTypes2.default.string,
+  labelFontWeight: _propTypes2.default.string,
+  labelFontSize: _propTypes2.default.string,
+  fillColor: _propTypes2.default.string,
+  startAngle: _propTypes2.default.number,
+  endAngle: _propTypes2.default.number,
+  radius: _propTypes2.default.number,
+  style: _propTypes2.default.object
 };
 CirclePie.defaultProps = {
   width: 150,

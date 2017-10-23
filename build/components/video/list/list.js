@@ -10,6 +10,10 @@ var _react = require('react');
 
 var _react2 = _interopRequireDefault(_react);
 
+var _propTypes = require('prop-types');
+
+var _propTypes2 = _interopRequireDefault(_propTypes);
+
 var _http = require('../../../lib/http');
 
 var _grid = require('../../util/grid/grid');
@@ -180,12 +184,12 @@ var List = function (_React$Component) {
 }(_react2.default.Component);
 
 List.propTypes = {
-  sortBy: _react2.default.PropTypes.string,
-  limit: _react2.default.PropTypes.number,
-  flags: _react2.default.PropTypes.array,
-  endpoint: _react2.default.PropTypes.string,
-  searchTerm: _react2.default.PropTypes.string,
-  mediaType: _react2.default.PropTypes.oneOf(['video', 'playlist'])
+  sortBy: _propTypes2.default.string,
+  limit: _propTypes2.default.number,
+  flags: _propTypes2.default.array,
+  endpoint: _propTypes2.default.string,
+  searchTerm: _propTypes2.default.string,
+  mediaType: _propTypes2.default.oneOf(['video', 'playlist'])
 };
 List.defaultProps = {
   sortBy: 'recent',

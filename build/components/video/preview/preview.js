@@ -11,6 +11,10 @@ var _react = require('react');
 
 var _react2 = _interopRequireDefault(_react);
 
+var _propTypes = require('prop-types');
+
+var _propTypes2 = _interopRequireDefault(_propTypes);
+
 var _moment = require('moment');
 
 var _moment2 = _interopRequireDefault(_moment);
@@ -213,9 +217,9 @@ var Preview = function (_Component) {
 }(_react.Component);
 
 Preview.propTypes = {
-  type: _react2.default.PropTypes.oneOf(['list', 'grid']),
-  mediaType: _react2.default.PropTypes.oneOf(['video', 'playlist']),
-  width: _react2.default.PropTypes.number
+  type: _propTypes2.default.oneOf(['list', 'grid']),
+  mediaType: _propTypes2.default.oneOf(['video', 'playlist']),
+  width: _propTypes2.default.number
 };
 Preview.defaultProps = {
   type: 'grid',

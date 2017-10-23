@@ -1,4 +1,4 @@
-import React, {Component, PropTypes} from 'react'
+import React, {Component} from 'react'
 import Icon from '../../icon/icon'
 import styles from './_stylesheet'
 import InputText from '../../form/input-text/input-text'

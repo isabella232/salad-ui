@@ -1,4 +1,5 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 import {formatNumber} from '../../../lib/formatter'
 
 export default class Bar extends React.Component{
@@ -23,12 +24,12 @@ export default class Bar extends React.Component{
   }
 
   static propTypes = {
-    metricName: React.PropTypes.string,
-    barSize: React.PropTypes.number,
-    label: React.PropTypes.string,
-    metricColor: React.PropTypes.string,
-    barColor: React.PropTypes.string,
-    barRailColor: React.PropTypes.string,
+    metricName: PropTypes.string,
+    barSize: PropTypes.number,
+    label: PropTypes.string,
+    metricColor: PropTypes.string,
+    barColor: PropTypes.string,
+    barRailColor: PropTypes.string,
   }
 
   formatValue(value){

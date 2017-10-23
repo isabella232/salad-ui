@@ -13,6 +13,10 @@ var _react = require('react');
 
 var _react2 = _interopRequireDefault(_react);
 
+var _propTypes = require('prop-types');
+
+var _propTypes2 = _interopRequireDefault(_propTypes);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _objectWithoutProperties(obj, keys) { var target = {}; for (var i in obj) { if (keys.indexOf(i) >= 0) continue; if (!Object.prototype.hasOwnProperty.call(obj, i)) continue; target[i] = obj[i]; } return target; }
@@ -115,7 +119,6 @@ var Icon = function (_React$Component) {
     value: function render() {
       // For some funny reason, react can't match client and server
       // code when the properties are not specified individually
-
       var _Object$assign = Object.assign({}, this.props, {
         style: Object.assign({}, this.props.style, {
           width: this.props.width,
@@ -143,10 +146,10 @@ var Icon = function (_React$Component) {
 }(_react2.default.Component);
 
 Icon.propTypes = {
-  width: _react2.default.PropTypes.number,
-  height: _react2.default.PropTypes.number,
-  type: _react2.default.PropTypes.oneOf(Object.keys(iconTypes)),
-  viewbox: _react2.default.PropTypes.string
+  width: _propTypes2.default.number,
+  height: _propTypes2.default.number,
+  type: _propTypes2.default.oneOf(Object.keys(iconTypes)),
+  viewbox: _propTypes2.default.string
 };
 Icon.defaultProps = {
   type: null,

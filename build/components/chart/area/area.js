@@ -4,8 +4,6 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol ? "symbol" : typeof obj; };
-
 var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
@@ -13,6 +11,10 @@ var _createClass = function () { function defineProperties(target, props) { for 
 var _react = require('react');
 
 var _react2 = _interopRequireDefault(_react);
+
+var _propTypes = require('prop-types');
+
+var _propTypes2 = _interopRequireDefault(_propTypes);
 
 var _reactDom = require('react-dom');
 
@@ -288,9 +290,6 @@ var Area = function (_Component) {
     value: function reduceData() {
       var data = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : [];
       var startDate = arguments[1];
-
-      var _this5 = this;
-
       var endDate = arguments[2];
       var maxPoints = arguments.length > 3 && arguments[3] !== undefined ? arguments[3] : 12;
 
@@ -313,33 +312,25 @@ var Area = function (_Component) {
 
       // Limit number of points for given data set
       if (results.length > maxPoints) {
-        var _ret2 = function () {
-          var zScale = results.length / maxPoints,
-              selectedRange = [];
-          results.forEach(function (point, i) {
-            var k = Math.floor(i / zScale),
-                v = parseFloat(point.value);
-            if (selectedRange[k]) selectedRange[k].value += v;else selectedRange[k] = { value: v, label: '{{value}} ' + point.label, time: point.time };
+        var zScale = results.length / maxPoints,
+            selectedRange = [];
+        results.forEach(function (point, i) {
+          var k = Math.floor(i / zScale),
+              v = parseFloat(point.value);
+          if (selectedRange[k]) selectedRange[k].value += v;else selectedRange[k] = { value: v, label: '{{value}} ' + point.label, time: point.time };
+        });
+        if (this.props.formula === 'mean') {
+          return selectedRange.map(function (point) {
+            return _extends({}, point, { value: Math.round(point.value * 100 / zScale) / 100 });
           });
-          if (_this5.props.formula === 'mean') {
-            return {
-              v: selectedRange.map(function (point) {
-                return _extends({}, point, { value: Math.round(point.value * 100 / zScale) / 100 });
-              })
-            };
-          }
-          return {
-            v: selectedRange
-          };
-        }();
-
-        if ((typeof _ret2 === 'undefined' ? 'undefined' : _typeof(_ret2)) === "object") return _ret2.v;
+        }
+        return selectedRange;
       } else return results;
     }
   }, {
     key: 'describeXAxis',
     value: function describeXAxis(xMin, xSpread, xScale, data) {
-      var _this6 = this;
+      var _this5 = this;
 
       var keys = [1, 2, 3, 4, 5, 6, 7, 8, 9],
           keyInterval = data.length / keys.length,
@@ -347,8 +338,8 @@ var Area = function (_Component) {
           labels = [],
           day = 86400000;
 
-      if (xMin < 10000) return { labels: [] }; // No timestamps given
-      if (keys.length > data.length) {
+      if (xMin < 10000) return { labels: [] // No timestamps given
+      };if (keys.length > data.length) {
         keys = data.map(function (p, i) {
           return i + 1;
         });
@@ -366,7 +357,7 @@ var Area = function (_Component) {
           txt: (0, _moment2.default)(time).format(dateFormat),
           time: time,
           x: (time - xMin) * xScale,
-          y: _this6.activeHeight + 30,
+          y: _this5.activeHeight + 30,
           ref: 'xLabel.' + i
         });
       });
@@ -380,11 +371,11 @@ var Area = function (_Component) {
   }, {
     key: 'centerXAxisLabelMarkers',
     value: function centerXAxisLabelMarkers() {
-      var _this7 = this;
+      var _this6 = this;
 
       this.xAxisLabels.forEach(function (label) {
-        var domLabel = _this7.refs[label.ref];
-        _this7.centerElement(domLabel, label.x, domLabel.getBBox().width);
+        var domLabel = _this6.refs[label.ref];
+        _this6.centerElement(domLabel, label.x, domLabel.getBBox().width);
       });
     }
   }, {
@@ -400,7 +391,7 @@ var Area = function (_Component) {
   }, {
     key: 'render',
     value: function render() {
-      var _this8 = this;
+      var _this7 = this;
 
       var data = this.props.data;
 
@@ -481,9 +472,9 @@ var Area = function (_Component) {
             ref: label.ref + '.marker',
             x1: label.x,
             x2: label.x,
-            y1: _this8.activeHeight,
-            y2: _this8.activeHeight + 10,
-            stroke: _this8.props.gridColor,
+            y1: _this7.activeHeight,
+            y2: _this7.activeHeight + 10,
+            stroke: _this7.props.gridColor,
             strokeWidth: 1
           });
         }),
@@ -498,33 +489,33 @@ var Area = function (_Component) {
 }(_react.Component);
 
 Area.propTypes = {
-  width: _react2.default.PropTypes.number,
-  height: _react2.default.PropTypes.number,
-  border: _react2.default.PropTypes.string,
-  strokeWidth: _react2.default.PropTypes.number,
-  useDynamicYMin: _react2.default.PropTypes.bool,
-  strokeColor: _react2.default.PropTypes.string,
-  strokeDasharray: _react2.default.PropTypes.number,
-  pointsRadius: _react2.default.PropTypes.number,
-  showFirstAndLastTip: _react2.default.PropTypes.bool,
-  tipsWidth: _react2.default.PropTypes.number,
-  tipsHeight: _react2.default.PropTypes.number,
-  tipsPadding: _react2.default.PropTypes.number,
-  tipStrokeWidth: _react2.default.PropTypes.number,
-  tipStrokeColor: _react2.default.PropTypes.string,
-  tipsFill: _react2.default.PropTypes.string,
-  gridColor: _react2.default.PropTypes.string,
-  labelFontSize: _react2.default.PropTypes.number,
-  labelTextShadow: _react2.default.PropTypes.string,
-  labelColor: _react2.default.PropTypes.string,
-  fillColor: _react2.default.PropTypes.string,
-  maxOverflow: _react2.default.PropTypes.number,
-  maxPoints: _react2.default.PropTypes.number,
-  yLabelsOutside: _react2.default.PropTypes.bool,
-  yLabelsPosition: _react2.default.PropTypes.string,
-  formula: _react2.default.PropTypes.string,
-  yPadding: _react2.default.PropTypes.number,
-  data: _react2.default.PropTypes.array
+  width: _propTypes2.default.number,
+  height: _propTypes2.default.number,
+  border: _propTypes2.default.string,
+  strokeWidth: _propTypes2.default.number,
+  useDynamicYMin: _propTypes2.default.bool,
+  strokeColor: _propTypes2.default.string,
+  strokeDasharray: _propTypes2.default.number,
+  pointsRadius: _propTypes2.default.number,
+  showFirstAndLastTip: _propTypes2.default.bool,
+  tipsWidth: _propTypes2.default.number,
+  tipsHeight: _propTypes2.default.number,
+  tipsPadding: _propTypes2.default.number,
+  tipStrokeWidth: _propTypes2.default.number,
+  tipStrokeColor: _propTypes2.default.string,
+  tipsFill: _propTypes2.default.string,
+  gridColor: _propTypes2.default.string,
+  labelFontSize: _propTypes2.default.number,
+  labelTextShadow: _propTypes2.default.string,
+  labelColor: _propTypes2.default.string,
+  fillColor: _propTypes2.default.string,
+  maxOverflow: _propTypes2.default.number,
+  maxPoints: _propTypes2.default.number,
+  yLabelsOutside: _propTypes2.default.bool,
+  yLabelsPosition: _propTypes2.default.string,
+  formula: _propTypes2.default.string,
+  yPadding: _propTypes2.default.number,
+  data: _propTypes2.default.array
 };
 Area.defaultProps = {
   width: 640,

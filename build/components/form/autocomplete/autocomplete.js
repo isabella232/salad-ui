@@ -6,13 +6,17 @@ Object.defineProperty(exports, "__esModule", {
 
 var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
-var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol ? "symbol" : typeof obj; };
+var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
 var _react = require('react');
 
 var _react2 = _interopRequireDefault(_react);
+
+var _propTypes = require('prop-types');
+
+var _propTypes2 = _interopRequireDefault(_propTypes);
 
 var _inputText = require('../input-text/input-text');
 
@@ -276,17 +280,17 @@ var Autocomplete = function (_Component) {
 }(_react.Component);
 
 Autocomplete.propTypes = {
-  inputPlaceholder: _react2.default.PropTypes.string,
-  noSuggestionsText: _react2.default.PropTypes.string,
-  isLoading: _react2.default.PropTypes.bool,
-  clearOnSelect: _react2.default.PropTypes.bool,
-  allowCustomText: _react2.default.PropTypes.bool,
-  latency: _react2.default.PropTypes.number,
-  limit: _react2.default.PropTypes.number,
-  style: _react2.default.PropTypes.object,
-  suggestions: _react2.default.PropTypes.array,
-  handleSelectItem: _react2.default.PropTypes.func.isRequired,
-  requestSuggestions: _react2.default.PropTypes.func.isRequired
+  inputPlaceholder: _propTypes2.default.string,
+  noSuggestionsText: _propTypes2.default.string,
+  isLoading: _propTypes2.default.bool,
+  clearOnSelect: _propTypes2.default.bool,
+  allowCustomText: _propTypes2.default.bool,
+  latency: _propTypes2.default.number,
+  limit: _propTypes2.default.number,
+  style: _propTypes2.default.object,
+  suggestions: _propTypes2.default.array,
+  handleSelectItem: _propTypes2.default.func.isRequired,
+  requestSuggestions: _propTypes2.default.func.isRequired
 };
 Autocomplete.defaultProps = {
   latency: 300,

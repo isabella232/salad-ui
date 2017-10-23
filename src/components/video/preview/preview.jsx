@@ -1,4 +1,5 @@
 import React, {Component} from 'react'
+import PropTypes from 'prop-types'
 import moment from 'moment'
 import Badge from '../../util/badge/badge'
 import Trans from '../../util/trans/trans'
@@ -54,9 +55,9 @@ export default class Preview extends Component {
   }
 
   static propTypes = {
-    type: React.PropTypes.oneOf(['list', 'grid']),
-    mediaType: React.PropTypes.oneOf(['video', 'playlist']),
-    width: React.PropTypes.number,
+    type: PropTypes.oneOf(['list', 'grid']),
+    mediaType: PropTypes.oneOf(['video', 'playlist']),
+    width: PropTypes.number,
   }
 
   static defaultProps = {

@@ -112,7 +112,8 @@ var Grid = function (_React$Component) {
           marginRight: (index + 1) % _this2.state.breakPoint.columns !== 0 ? 20 : 0,
           marginBottom: 20,
           flexGrow: 'grow',
-          display: 'inline-block' });
+          display: 'inline-block' //non flex fallback
+        });
         return _react2.default.createElement(
           'div',
           { key: 'vid.' + index, style: itemStyles },
