@@ -1,4 +1,4 @@
-# SaladUI
+# SaladUI [![Build Status](https://travis-ci.org/cypress-io/salad-ui.svg?branch=master)](https://travis-ci.org/cypress-io/salad-ui)
 
 SaladUI provides a collection of simple React Components to build Universal apps.
 
