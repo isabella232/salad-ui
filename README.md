@@ -10,7 +10,7 @@ You can either include all the components:
 npm i --save salad-ui
 ```
 
-```
+```js
 import Salad from 'salad-ui'
 class myComponent extends React.Component{
   render(){
@@ -21,11 +21,11 @@ class myComponent extends React.Component{
 
 Or some of the elements separately (lightweight!)
 
-```
+```bash
 npm i --save salad-ui.form
 ```
 
-```
+```js
 import { Autocomplete } from 'salad-ui.form'
 class myComponent extends React.Component{
   render(){
@@ -45,7 +45,6 @@ class myComponent extends React.Component{
 If you would like to contribute, feel free to submite pull requests/contact us directly. Salad-UI intends to develop simple, lightweight components that can be re-used accross various applications and environents.
 
 Requirements:
-Sass `gem install sass`
 Node (tested in latest)
 Npm (tested in latest)
 
